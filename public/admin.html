@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel - Al-Nafay Fragency</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="admin-page">
+  <!-- Admin Navigation -->
+  <nav class="admin-navbar">
+    <div class="container">
+      <h2>Admin Panel</h2>
+      <button id="logoutBtn" class="btn btn-danger">Logout</button>
+    </div>
+  </nav>
+
+  <div class="admin-container">
+    <!-- Sidebar -->
+    <aside class="admin-sidebar">
+      <ul>
+        <li><a href="#" class="sidebar-link active" data-section="products">Products</a></li>
+        <li><a href="#" class="sidebar-link" data-section="orders">Orders</a></li>
+        <li><a href="#" class="sidebar-link" data-section="analytics">Analytics</a></li>
+      </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="admin-content">
+      <!-- Products Section -->
+      <section id="products-section" class="admin-section active">
+        <h3>Manage Products</h3>
+        
+        <!-- Add New Product Form -->
+        <div class="form-section">
+          <h4>Add New Product</h4>
+          <form id="addProductForm">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="productName">Product Name:</label>
+                <input type="text" id="productName" required>
+              </div>
+              <div class="form-group">
+                <label for="productPrice">Price (PKR):</label>
+                <input type="number" id="productPrice" required>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="productCategory">Category:</label>
+                <select id="productCategory">
+                  <option value="floral">Floral</option>
+                  <option value="oriental">Oriental</option>
+                  <option value="citrus">Citrus</option>
+                  <option value="woody">Woody</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="productImage">Image URL:</label>
+                <input type="text" id="productImage">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="productDescription">Description:</label>
+              <textarea id="productDescription"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Add Product</button>
+          </form>
+        </div>
+
+        <!-- Products Table -->
+        <div class="table-section">
+          <h4>Current Products</h4>
+          <table id="productsTable" class="admin-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Category</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="productsTableBody">
+              <!-- Products will be loaded here -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Orders Section -->
+      <section id="orders-section" class="admin-section">
+        <h3>Orders</h3>
+        <p>Orders management coming soon...</p>
+      </section>
+
+      <!-- Analytics Section -->
+      <section id="analytics-section" class="admin-section">
+        <h3>Analytics</h3>
+        <p>Analytics dashboard coming soon...</p>
+      </section>
+    </main>
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+</html>
