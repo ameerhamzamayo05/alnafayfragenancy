@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script>(function(w,i,g){w[g]=w[g]||[];if(typeof w[g].push=='function')w[g].push(i)})
+(window,'GTM-KL4FQVG','google_tags_first_party');</script><script>(function(w,d,s,l){w[l]=w[l]||[];(function(){w[l].push(arguments);})('set', 'developer_id.dY2E1Nz', true);
+		var f=d.getElementsByTagName(s)[0],
+		j=d.createElement(s);j.async=true;j.src='/cake/';
+		f.parentNode.insertBefore(j,f);
+		})(window,document,'script','dataLayer');</script>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Dashboard – Al Nafay Fragrance</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Montserrat', sans-serif; background: #f5f6fa; color: #222; display: flex; min-height: 100vh; }
+
+    /* SIDEBAR */
+    .sidebar {
+      width: 260px; background: #111; color: #fff;
+      display: flex; flex-direction: column;
+      min-height: 100vh; position: sticky; top: 0;
+      flex-shrink: 0;
+    }
+    .sidebar-logo {
+      padding: 28px 24px 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .sidebar-logo h2 { font-family: 'Cormorant Garamond', serif; font-size: 20px; color: #c8a96e; }
+    .sidebar-logo p { font-size: 11px; color: #888; margin-top: 2px; }
+    .sidebar-nav { padding: 20px 0; flex: 1; }
+    .nav-item {
+      display: flex; align-items: center; gap: 12px;
+      padding: 12px 24px; cursor: pointer;
+      font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.7);
+      transition: all 0.2s; border-left: 3px solid transparent;
+    }
+    .nav-item:hover, .nav-item.active { color: #fff; background: rgba(200,169,110,0.1); border-left-color: #c8a96e; }
+    .nav-item i { width: 18px; color: #c8a96e; }
+    .sidebar-footer {
+      padding: 20px 24px; border-top: 1px solid rgba(255,255,255,0.08);
+    }
+    .logout-btn {
+      display: flex; align-items: center; gap: 10px;
+      color: rgba(255,255,255,0.5); font-size: 13px; cursor: pointer;
+      transition: color 0.2s;
+    }
+    .logout-btn:hover { color: #fff; }
+
+    /* MAIN */
+    .main { flex: 1; overflow-x: hidden; }
+    .topbar {
+      background: #fff; padding: 16px 32px;
+      display: flex; align-items: center; justify-content: space-between;
+      border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 100;
+    }
+    .topbar h3 { font-size: 16px; font-weight: 600; color: #333; }
+    .topbar-right { display: flex; align-items: center; gap: 16px; }
+    .admin-badge {
+      background: #c8a96e; color: #fff;
+      padding: 4px 14px; border-radius: 20px; font-size: 11px; font-weight: 600;
+    }
+    .view-site {
+      font-size: 12px; color: #c8a96e; font-weight: 600; text-decoration: none;
+      border: 1px solid #c8a96e; padding: 5px 14px; border-radius: 20px;
+      transition: all 0.2s;
+    }
+    .view-site:hover { background: #c8a96e; color: #fff; }
+
+    /* CONTENT SECTIONS */
+    .page { display: none; padding: 32px; }
+    .page.active { display: block; }
+
+    /* STATS */
+    .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 32px; }
+    .stat-card {
+      background: #fff; border-radius: 12px; padding: 24px;
+      border-left: 4px solid #c8a96e;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+    .stat-label { font-size: 12px; color: #888; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+    .stat-value { font-size: 28px; font-weight: 700; color: #111; font-family: 'Cormorant Garamond', serif; }
+    .stat-sub { font-size: 12px; color: #aaa; margin-top: 4px; }
+
+    /* TABLE */
+    .table-card { background: #fff; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); overflow: hidden; }
+    .table-head {
+      padding: 20px 24px; display: flex; align-items: center; justify-content: space-between;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    .table-head h4 { font-size: 15px; font-weight: 600; }
+    table { width: 100%; border-collapse: collapse; }
+    th { background: #f8f9fa; padding: 12px 20px; text-align: left; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: #888; }
+    td { padding: 14px 20px; border-top: 1px solid #f5f5f5; font-size: 13px; }
+    tr:hover td { background: #fafaf8; }
+    .badge-active { background: #e6f9f0; color: #27ae60; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; }
+    .badge-oos { background: #fff0f0; color: #e74c3c; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; }
+
+    /* FORM */
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .form-group { margin-bottom: 0; }
+    .form-group label { display: block; font-size: 12px; font-weight: 600; color: #555; margin-bottom: 6px; text-transform: uppercase; }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%; padding: 10px 14px; border: 1.5px solid #e0e0e0;
+      border-radius: 8px; font-size: 13px; font-family: 'Montserrat', sans-serif;
+      color: #222; outline: none; transition: border-color 0.2s;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: #c8a96e; }
+    .form-group.full { grid-column: 1 / -1; }
+    .form-actions { margin-top: 24px; display: flex; gap: 12px; }
+    .btn-gold {
+      background: #c8a96e; color: #fff; border: none;
+      padding: 11px 28px; border-radius: 8px; font-size: 13px; font-weight: 600;
+      cursor: pointer; font-family: 'Montserrat', sans-serif; transition: background 0.2s;
+    }
+    .btn-gold:hover { background: #a07840; }
+    .btn-outline {
+      background: transparent; color: #666; border: 1.5px solid #ddd;
+      padding: 11px 28px; border-radius: 8px; font-size: 13px; font-weight: 600;
+      cursor: pointer; font-family: 'Montserrat', sans-serif; transition: all 0.2s;
+    }
+    .btn-outline:hover { border-color: #c8a96e; color: #c8a96e; }
+    .success-alert {
+      display: none; background: #e6f9f0; border: 1px solid #a8e6cf;
+      color: #27ae60; padding: 12px 18px; border-radius: 8px; margin-bottom: 20px; font-size: 13px;
+    }
+    .success-alert.show { display: block; }
+
+    /* PRODUCTS TABLE */
+    .product-emoji-col { font-size: 24px; }
+    .edit-btn, .delete-btn {
+      padding: 5px 14px; border-radius: 6px; font-size: 12px; font-weight: 600; cursor: pointer; border: none; font-family: 'Montserrat', sans-serif;
+    }
+    .edit-btn { background: #f0f0f0; color: #333; margin-right: 6px; }
+    .edit-btn:hover { background: #c8a96e; color: #fff; }
+    .delete-btn { background: #fff0f0; color: #e74c3c; }
+    .delete-btn:hover { background: #e74c3c; color: #fff; }
+
+    /* SETTINGS */
+    .settings-section { background: #fff; border-radius: 12px; padding: 28px; margin-bottom: 24px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+    .settings-section h4 { font-size: 15px; font-weight: 600; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid #f0f0f0; }
+    .password-notice { background: #fffbf0; border: 1px solid #ffe0a0; padding: 12px 16px; border-radius: 8px; font-size: 12px; color: #a07840; margin-top: 16px; }
+
+    @media (max-width: 768px) {
+      .sidebar { display: none; }
+      .form-grid { grid-template-columns: 1fr; }
+      .page { padding: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  <div class="sidebar-logo">
+    <h2>Al Nafay</h2>
+    <p>Admin Panel</p>
+  </div>
+  <nav class="sidebar-nav">
+    <div class="nav-item active" onclick="showPage('dashboard')">
+      <i class="fas fa-tachometer-alt"></i> Dashboard
+    </div>
+    <div class="nav-item" onclick="showPage('products')">
+      <i class="fas fa-flask"></i> Products
+    </div>
+    <div class="nav-item" onclick="showPage('add-product')">
+      <i class="fas fa-plus-circle"></i> Add Product
+    </div>
+    <div class="nav-item" onclick="showPage('orders')">
+      <i class="fas fa-shopping-bag"></i> Orders
+    </div>
+    <div class="nav-item" onclick="showPage('settings')">
+      <i class="fas fa-cog"></i> Settings
+    </div>
+  </nav>
+  <div class="sidebar-footer">
+    <div class="logout-btn" onclick="doLogout()">
+      <i class="fas fa-sign-out-alt"></i> Logout
+    </div>
+  </div>
+</aside>
+
+<!-- MAIN -->
+<div class="main">
+  <div class="topbar">
+    <h3 id="pageTitle">Dashboard</h3>
+    <div class="topbar-right">
+      <span class="admin-badge">Admin</span>
+      <a class="view-site" href="../index.html" target="_blank"><i class="fas fa-external-link-alt"></i> View Site</a>
+    </div>
+  </div>
+
+  <!-- DASHBOARD PAGE -->
+  <div class="page active" id="page-dashboard">
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-label">Total Products</div>
+        <div class="stat-value" id="statProducts">0</div>
+        <div class="stat-sub">In database</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Categories</div>
+        <div class="stat-value">6</div>
+        <div class="stat-sub">EDP, EDT, Oud, Gift Sets…</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Best Sellers</div>
+        <div class="stat-value" id="statBest">0</div>
+        <div class="stat-sub">Featured on homepage</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">New Arrivals</div>
+        <div class="stat-value" id="statNew">0</div>
+        <div class="stat-sub">Recently added</div>
+      </div>
+    </div>
+    <div class="table-card">
+      <div class="table-head">
+        <h4>Recent Products</h4>
+        <button class="btn-gold" onclick="showPage('add-product')">+ Add Product</button>
+      </div>
+      <table id="recentTable">
+        <thead><tr><th></th><th>Name</th><th>Brand</th><th>Category</th><th>Price</th><th>Status</th></tr></thead>
+        <tbody id="recentBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- PRODUCTS PAGE -->
+  <div class="page" id="page-products">
+    <div class="table-card">
+      <div class="table-head">
+        <h4>All Products</h4>
+        <button class="btn-gold" onclick="showPage('add-product')">+ Add New</button>
+      </div>
+      <table>
+        <thead><tr><th></th><th>Name</th><th>Brand</th><th>Category</th><th>Price</th><th>Flags</th><th>Actions</th></tr></thead>
+        <tbody id="allProductsBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ADD PRODUCT PAGE -->
+  <div class="page" id="page-add-product">
+    <div class="table-card" style="padding:28px;">
+      <h4 style="margin-bottom:24px;font-size:16px;">Add New Product</h4>
+      <div class="success-alert" id="addSuccess">✅ Product added successfully! Reload the homepage to see it.</div>
+      <form onsubmit="addProduct(event)">
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Product Name</label>
+            <input type="text" id="pName" placeholder="e.g. Acqua Di Gio Parfum" required/>
+          </div>
+          <div class="form-group">
+            <label>Brand</label>
+            <input type="text" id="pBrand" placeholder="e.g. Giorgio Armani" required/>
+          </div>
+          <div class="form-group">
+            <label>Category</label>
+            <select id="pCategory" required>
+              <option value="">Select category</option>
+              <option value="EDP">EDP – Eau de Parfum</option>
+              <option value="EDT">EDT – Eau de Toilette</option>
+              <option value="Oud">Oud</option>
+              <option value="Gift Set">Gift Set</option>
+              <option value="Attar">Attar</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Type</label>
+            <select id="pType" required>
+              <option value="">Select type</option>
+              <option value="Men">Men</option>
+              <option value="Women">Women</option>
+              <option value="Unisex">Unisex</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Price (Rs.)</label>
+            <input type="number" id="pPrice" placeholder="e.g. 12500" required min="1"/>
+          </div>
+          <div class="form-group">
+            <label>Old Price (Rs.) - optional</label>
+            <input type="number" id="pOldPrice" placeholder="Leave empty if no discount" min="1"/>
+          </div>
+          <div class="form-group">
+            <label>Emoji Icon</label>
+            <input type="text" id="pEmoji" placeholder="e.g. 🔵 🌹 🎁" value="🌸"/>
+          </div>
+          <div class="form-group">
+            <label>Badge Text - optional</label>
+            <input type="text" id="pBadge" placeholder="e.g. NEW, -20%, HOT"/>
+          </div>
+          <div class="form-group full">
+            <label>Description</label>
+            <textarea id="pDesc" rows="3" placeholder="Describe the fragrance..." required></textarea>
+          </div>
+          <div class="form-group">
+            <label style="display:flex;align-items:center;gap:8px;cursor:pointer;">
+              <input type="checkbox" id="pBest" style="width:auto;padding:0;border:none;"/> Show as Best Seller
+            </label>
+          </div>
+          <div class="form-group">
+            <label style="display:flex;align-items:center;gap:8px;cursor:pointer;">
+              <input type="checkbox" id="pNew" checked style="width:auto;padding:0;border:none;"/> Show as New Arrival
+            </label>
+          </div>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn-gold">Add Product</button>
+          <button type="button" class="btn-outline" onclick="clearForm()">Clear</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ORDERS PAGE -->
+  <div class="page" id="page-orders">
+    <div class="table-card" style="padding:40px;text-align:center;">
+      <i class="fas fa-whatsapp" style="font-size:48px;color:#25D366;margin-bottom:16px;"></i>
+      <h4 style="margin-bottom:10px;">Orders via WhatsApp</h4>
+      <p style="color:#888;font-size:14px;max-width:500px;margin:0 auto 20px;">
+        Currently, orders are placed via WhatsApp checkout. When a customer clicks "Proceed to Checkout," 
+        a WhatsApp message is sent to your number with the full order details.
+      </p>
+      <div style="background:#f5f5f5;border-radius:8px;padding:16px;display:inline-block;text-align:left;margin-bottom:20px;">
+        <strong style="font-size:13px;">To update your WhatsApp number:</strong><br/>
+        <span style="font-size:12px;color:#888;">Open app.js → find "wa.me/923000000000" → replace with your number</span>
+      </div>
+      <br/>
+      <a href="https://wa.me" target="_blank" class="btn-gold" style="display:inline-block;text-decoration:none;">Open WhatsApp Web</a>
+    </div>
+  </div>
+
+  <!-- SETTINGS PAGE -->
+  <div class="page" id="page-settings">
+    <div class="settings-section">
+      <h4>Change Admin Password</h4>
+      <div class="success-alert" id="pwSuccess">✅ Password updated! Note: update it in login.html too.</div>
+      <div class="form-grid">
+        <div class="form-group">
+          <label>New Username</label>
+          <input type="text" id="newUser" placeholder="New username"/>
+        </div>
+        <div class="form-group">
+          <label>New Password</label>
+          <input type="password" id="newPass" placeholder="New password"/>
+        </div>
+      </div>
+      <div class="form-actions">
+        <button class="btn-gold" onclick="saveSettings()">Save Settings</button>
+      </div>
+      <div class="password-notice">
+        ⚠️ To permanently change the login credentials, also update the <code>ADMIN_CREDENTIALS</code> object in <code>admin/login.html</code>.
+      </div>
+    </div>
+    <div class="settings-section">
+      <h4>Store Settings</h4>
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Store Name</label>
+          <input type="text" value="Al Nafay Fragrance"/>
+        </div>
+        <div class="form-group">
+          <label>WhatsApp Number</label>
+          <input type="tel" id="waNumber" placeholder="+92 300 0000000"/>
+        </div>
+        <div class="form-group">
+          <label>Contact Email</label>
+          <input type="email" value="info@alnafayfragrance.com"/>
+        </div>
+        <div class="form-group">
+          <label>City</label>
+          <input type="text" value="Lahore, Pakistan"/>
+        </div>
+      </div>
+      <div class="form-actions">
+        <button class="btn-gold" onclick="showToast('Settings saved!')">Save Changes</button>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /main -->
+
+<script src="../products.js"></script>
+<script>
+  // ---- AUTH CHECK ----
+  if (localStorage.getItem('alnafay_admin_auth') !== 'true') {
+    window.location.href = 'login.html';
+  }
+
+  // ---- LOCAL PRODUCT OVERRIDES ----
+  let localProducts = JSON.parse(localStorage.getItem('alnafay_local_products') || '[]');
+  function getAllProducts() { return [...PRODUCTS, ...localProducts]; }
+
+  // ---- NAVIGATION ----
+  const pageTitles = {
+    'dashboard': 'Dashboard',
+    'products': 'All Products',
+    'add-product': 'Add New Product',
+    'orders': 'Orders',
+    'settings': 'Settings'
+  };
+  function showPage(id) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    document.getElementById('page-' + id).classList.add('active');
+    document.getElementById('pageTitle').textContent = pageTitles[id] || id;
+    document.querySelectorAll('.nav-item').forEach(n => {
+      if (n.textContent.toLowerCase().includes(id.replace('-', ' ').split(' ')[0].toLowerCase())) n.classList.add('active');
+    });
+    if (id === 'dashboard') renderDashboard();
+    if (id === 'products') renderAllProducts();
+  }
+
+  // ---- DASHBOARD ----
+  function renderDashboard() {
+    const all = getAllProducts();
+    document.getElementById('statProducts').textContent = all.length;
+    document.getElementById('statBest').textContent = all.filter(p => p.isBestSeller).length;
+    document.getElementById('statNew').textContent = all.filter(p => p.isNew).length;
+    const tbody = document.getElementById('recentBody');
+    tbody.innerHTML = all.slice(0, 6).map(p => `
+      <tr>
+        <td class="product-emoji-col">${p.emoji}</td>
+        <td><strong>${p.name}</strong></td>
+        <td>${p.brand}</td>
+        <td>${p.category}</td>
+        <td>Rs. ${p.price.toLocaleString()}</td>
+        <td><span class="badge-active">Active</span></td>
+      </tr>
+    `).join('');
+  }
+
+  // ---- ALL PRODUCTS ----
+  function renderAllProducts() {
+    const all = getAllProducts();
+    const tbody = document.getElementById('allProductsBody');
+    tbody.innerHTML = all.map(p => `
+      <tr>
+        <td class="product-emoji-col">${p.emoji}</td>
+        <td><strong>${p.name}</strong></td>
+        <td>${p.brand}</td>
+        <td>${p.category} · ${p.type}</td>
+        <td>Rs. ${p.price.toLocaleString()}</td>
+        <td>
+          ${p.isBestSeller ? '<span class="badge-active">Best Seller</span> ' : ''}
+          ${p.isNew ? '<span style="background:#e8f4ff;color:#2980b9;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:600;">New</span>' : ''}
+        </td>
+        <td>
+          <button class="edit-btn" onclick="alert('Edit product: ${p.name}\\n\\nTo edit, update products.js directly.')">Edit</button>
+          ${p.id > 100 ? `<button class="delete-btn" onclick="deleteLocal(${p.id})">Delete</button>` : ''}
+        </td>
+      </tr>
+    `).join('');
+  }
+
+  // ---- ADD PRODUCT ----
+  function addProduct(e) {
+    e.preventDefault();
+    const newProduct = {
+      id: Date.now(),
+      name: document.getElementById('pName').value,
+      brand: document.getElementById('pBrand').value,
+      category: document.getElementById('pCategory').value,
+      type: document.getElementById('pType').value,
+      price: parseInt(document.getElementById('pPrice').value),
+      oldPrice: document.getElementById('pOldPrice').value ? parseInt(document.getElementById('pOldPrice').value) : null,
+      emoji: document.getElementById('pEmoji').value || '🌸',
+      badge: document.getElementById('pBadge').value || null,
+      description: document.getElementById('pDesc').value,
+      isBestSeller: document.getElementById('pBest').checked,
+      isNew: document.getElementById('pNew').checked
+    };
+    localProducts.push(newProduct);
+    localStorage.setItem('alnafay_local_products', JSON.stringify(localProducts));
+    document.getElementById('addSuccess').classList.add('show');
+    setTimeout(() => document.getElementById('addSuccess').classList.remove('show'), 4000);
+    clearForm();
+  }
+
+  function clearForm() {
+    ['pName','pBrand','pPrice','pOldPrice','pDesc','pBadge'].forEach(id => document.getElementById(id).value = '');
+    document.getElementById('pEmoji').value = '🌸';
+    document.getElementById('pCategory').value = '';
+    document.getElementById('pType').value = '';
+    document.getElementById('pBest').checked = false;
+    document.getElementById('pNew').checked = true;
+  }
+
+  function deleteLocal(id) {
+    if (!confirm('Delete this product?')) return;
+    localProducts = localProducts.filter(p => p.id !== id);
+    localStorage.setItem('alnafay_local_products', JSON.stringify(localProducts));
+    renderAllProducts();
+  }
+
+  // ---- SETTINGS ----
+  function saveSettings() {
+    document.getElementById('pwSuccess').classList.add('show');
+    setTimeout(() => document.getElementById('pwSuccess').classList.remove('show'), 4000);
+  }
+
+  // ---- LOGOUT ----
+  function doLogout() {
+    localStorage.removeItem('alnafay_admin_auth');
+    window.location.href = 'login.html';
+  }
+
+  // ---- TOAST ----
+  function showToast(msg) {
+    const t = document.createElement('div');
+    t.style.cssText = 'position:fixed;bottom:28px;left:50%;transform:translateX(-50%);background:#111;color:#fff;padding:12px 28px;border-radius:40px;font-size:13px;font-weight:500;z-index:9999;border-left:4px solid #c8a96e;';
+    t.textContent = msg;
+    document.body.appendChild(t);
+    setTimeout(() => t.remove(), 2500);
+  }
+
+  // ---- INIT ----
+  renderDashboard();
+</script>
+</body>
+</html>

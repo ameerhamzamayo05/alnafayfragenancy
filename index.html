@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script>(function(w,i,g){w[g]=w[g]||[];if(typeof w[g].push=='function')w[g].push(i)})
+(window,'GTM-KL4FQVG','google_tags_first_party');</script><script>(function(w,d,s,l){w[l]=w[l]||[];(function(){w[l].push(arguments);})('set', 'developer_id.dY2E1Nz', true);
+		var f=d.getElementsByTagName(s)[0],
+		j=d.createElement(s);j.async=true;j.src='/cake/';
+		f.parentNode.insertBefore(j,f);
+		})(window,document,'script','dataLayer');</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Al Nafay Fragrance – Luxury Perfumes</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <span>✨ Free Delivery on Orders Above Rs. 2,500 &nbsp;|&nbsp; 100% Authentic Fragrances</span>
+</div>
+
+<!-- HEADER -->
+<header class="header" id="header">
+  <div class="header-inner">
+    <button class="nav-toggle" id="navToggle"><i class="fas fa-bars"></i></button>
+    <a href="index.html" class="logo">Al Nafay <span>Fragrance</span></a>
+    <nav class="nav" id="nav">
+      <a href="#home">Home</a>
+      <a href="#categories">Categories</a>
+      <a href="#bestsellers">Best Sellers</a>
+      <a href="#new">New Arrivals</a>
+      <a href="#brands">Brands</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="header-icons">
+      <a href="#" onclick="toggleSearch()"><i class="fas fa-search"></i></a>
+      <a href="#" onclick="toggleCart()"><i class="fas fa-shopping-bag"></i><span class="cart-count" id="cartCount">0</span></a>
+    </div>
+  </div>
+  <!-- Search Bar -->
+  <div class="search-bar" id="searchBar">
+    <input type="text" id="searchInput" placeholder="Search for fragrances, brands..." onkeyup="searchProducts()"/>
+    <button onclick="toggleSearch()"><i class="fas fa-times"></i></button>
+  </div>
+</header>
+
+<!-- HERO SLIDER -->
+<section class="hero" id="home">
+  <div class="hero-slides">
+    <div class="hero-slide active" style="background: linear-gradient(135deg, #1a0a00 0%, #3d1f00 50%, #1a0a00 100%);">
+      <div class="hero-content">
+        <p class="hero-sub">New Collection 2025</p>
+        <h1>Luxury Fragrances<br/><span>For Every Occasion</span></h1>
+        <p class="hero-desc">Discover our exclusive collection of premium perfumes from the world's finest houses</p>
+        <a href="#bestsellers" class="btn-primary">Shop Now</a>
+      </div>
+      <div class="hero-img-wrap">
+        <div class="hero-bottle">
+          <div class="bottle-shape">
+            <div class="bottle-neck"></div>
+            <div class="bottle-body">
+              <span>AL NAFAY</span>
+            </div>
+            <div class="bottle-base"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-slide" style="background: linear-gradient(135deg, #0a0a1a 0%, #1f1f3d 50%, #0a0a1a 100%);">
+      <div class="hero-content">
+        <p class="hero-sub">Premium Collection</p>
+        <h1>Oud & Oriental<br/><span>Masterpieces</span></h1>
+        <p class="hero-desc">Experience the richness of Middle Eastern scents crafted to perfection</p>
+        <a href="#categories" class="btn-primary">Explore Now</a>
+      </div>
+      <div class="hero-img-wrap">
+        <div class="hero-bottle gold">
+          <div class="bottle-shape">
+            <div class="bottle-neck"></div>
+            <div class="bottle-body">
+              <span>AL NAFAY</span>
+            </div>
+            <div class="bottle-base"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-slide" style="background: linear-gradient(135deg, #1a000a 0%, #3d001f 50%, #1a000a 100%);">
+      <div class="hero-content">
+        <p class="hero-sub">Gift Sets</p>
+        <h1>Perfect Gifts<br/><span>For Your Loved Ones</span></h1>
+        <p class="hero-desc">Beautifully curated fragrance gift sets for every special moment</p>
+        <a href="#new" class="btn-primary">View Gift Sets</a>
+      </div>
+      <div class="hero-img-wrap">
+        <div class="hero-bottle rose">
+          <div class="bottle-shape">
+            <div class="bottle-neck"></div>
+            <div class="bottle-body">
+              <span>AL NAFAY</span>
+            </div>
+            <div class="bottle-base"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-dots">
+    <span class="dot active" onclick="goToSlide(0)"></span>
+    <span class="dot" onclick="goToSlide(1)"></span>
+    <span class="dot" onclick="goToSlide(2)"></span>
+  </div>
+  <button class="hero-prev" onclick="changeSlide(-1)"><i class="fas fa-chevron-left"></i></button>
+  <button class="hero-next" onclick="changeSlide(1)"><i class="fas fa-chevron-right"></i></button>
+</section>
+
+<!-- FEATURES BAR -->
+<section class="features-bar">
+  <div class="features-inner">
+    <div class="feature">
+      <i class="fas fa-truck"></i>
+      <div>
+        <strong>Free Delivery</strong>
+        <span>On orders above Rs. 2,500</span>
+      </div>
+    </div>
+    <div class="feature">
+      <i class="fas fa-shield-alt"></i>
+      <div>
+        <strong>100% Authentic</strong>
+        <span>Genuine fragrances guaranteed</span>
+      </div>
+    </div>
+    <div class="feature">
+      <i class="fas fa-undo"></i>
+      <div>
+        <strong>Easy Returns</strong>
+        <span>7-day hassle-free return</span>
+      </div>
+    </div>
+    <div class="feature">
+      <i class="fas fa-headset"></i>
+      <div>
+        <strong>24/7 Support</strong>
+        <span>Always here to help</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CATEGORIES -->
+<section class="section" id="categories">
+  <div class="container">
+    <div class="section-title">
+      <p>Browse By</p>
+      <h2>Fragrance Categories</h2>
+    </div>
+    <div class="categories-grid">
+      <div class="cat-card" onclick="filterCategory('EDP')">
+        <div class="cat-icon"><i class="fas fa-flask"></i></div>
+        <h3>EDP</h3>
+        <p>Eau de Parfum</p>
+      </div>
+      <div class="cat-card" onclick="filterCategory('EDT')">
+        <div class="cat-icon"><i class="fas fa-spray-can"></i></div>
+        <h3>EDT</h3>
+        <p>Eau de Toilette</p>
+      </div>
+      <div class="cat-card" onclick="filterCategory('Oud')">
+        <div class="cat-icon"><i class="fas fa-star"></i></div>
+        <h3>Oud</h3>
+        <p>Oriental Blends</p>
+      </div>
+      <div class="cat-card" onclick="filterCategory('Gift Set')">
+        <div class="cat-icon"><i class="fas fa-gift"></i></div>
+        <h3>Gift Sets</h3>
+        <p>Perfect for Gifting</p>
+      </div>
+      <div class="cat-card" onclick="filterCategory('Men')">
+        <div class="cat-icon"><i class="fas fa-male"></i></div>
+        <h3>For Men</h3>
+        <p>Bold & Masculine</p>
+      </div>
+      <div class="cat-card" onclick="filterCategory('Women')">
+        <div class="cat-icon"><i class="fas fa-female"></i></div>
+        <h3>For Women</h3>
+        <p>Elegant & Floral</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BEST SELLERS -->
+<section class="section bg-light" id="bestsellers">
+  <div class="container">
+    <div class="section-title">
+      <p>Top Rated</p>
+      <h2>Best Sellers</h2>
+    </div>
+    <div class="products-grid" id="productsGrid">
+      <!-- Products injected by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- BANNER -->
+<section class="mid-banner">
+  <div class="mid-banner-content">
+    <p>Limited Time Offer</p>
+    <h2>Up to 30% OFF on Select Fragrances</h2>
+    <a href="#new" class="btn-light">Shop Sale</a>
+  </div>
+</section>
+
+<!-- NEW ARRIVALS -->
+<section class="section" id="new">
+  <div class="container">
+    <div class="section-title">
+      <p>Just In</p>
+      <h2>New Arrivals</h2>
+    </div>
+    <div class="products-grid" id="newArrivalsGrid">
+      <!-- Injected by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- BRANDS -->
+<section class="section bg-light" id="brands">
+  <div class="container">
+    <div class="section-title">
+      <p>Discover</p>
+      <h2>Our Brands</h2>
+    </div>
+    <div class="brands-grid">
+      <div class="brand-pill">Giorgio Armani</div>
+      <div class="brand-pill">Calvin Klein</div>
+      <div class="brand-pill">Chanel</div>
+      <div class="brand-pill">Dior</div>
+      <div class="brand-pill">Versace</div>
+      <div class="brand-pill">Burberry</div>
+      <div class="brand-pill">Davidoff</div>
+      <div class="brand-pill">Yves Saint Laurent</div>
+      <div class="brand-pill">Tom Ford</div>
+      <div class="brand-pill">Creed</div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section" id="reviews">
+  <div class="container">
+    <div class="section-title">
+      <p>Customer Reviews</p>
+      <h2>What Our Customers Say</h2>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p>"Absolutely love the fragrance collection. Authentic products and fast delivery!"</p>
+        <strong> - Fatima Hassan</strong>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p>"Best perfume store in Pakistan. The Oud collection is exceptional!"</p>
+        <strong> - Ahmed Raza</strong>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p>"Amazing packaging and the perfumes smell divine. Highly recommended!"</p>
+        <strong> - Sana Malik</strong>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section bg-dark" id="contact">
+  <div class="container">
+    <div class="section-title white">
+      <p>Get In Touch</p>
+      <h2>Contact Us</h2>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="contact-item">
+          <i class="fas fa-phone"></i>
+          <span>+92 300 0000000</span>
+        </div>
+        <div class="contact-item">
+          <i class="fas fa-envelope"></i>
+          <span>info@alnafayfragrance.com</span>
+        </div>
+        <div class="contact-item">
+          <i class="fas fa-map-marker-alt"></i>
+          <span>Lahore, Pakistan</span>
+        </div>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <form class="contact-form" onsubmit="submitForm(event)">
+        <input type="text" placeholder="Your Name" required/>
+        <input type="email" placeholder="Your Email" required/>
+        <input type="tel" placeholder="Phone Number"/>
+        <textarea placeholder="Your Message" rows="4" required></textarea>
+        <button type="submit" class="btn-primary">Send Message</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-col">
+      <h3>Al Nafay Fragrance</h3>
+      <p>Pakistan's premium destination for authentic luxury fragrances.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <a href="#home">Home</a>
+      <a href="#categories">Categories</a>
+      <a href="#bestsellers">Best Sellers</a>
+      <a href="#new">New Arrivals</a>
+    </div>
+    <div class="footer-col">
+      <h4>Customer Care</h4>
+      <a href="#">Track Order</a>
+      <a href="#">Return Policy</a>
+      <a href="#">FAQs</a>
+      <a href="#">Privacy Policy</a>
+    </div>
+    <div class="footer-col">
+      <h4>Newsletter</h4>
+      <p>Subscribe for exclusive offers</p>
+      <form onsubmit="subscribeNewsletter(event)">
+        <input type="email" placeholder="Your email" required/>
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Al Nafay Fragrance. All rights reserved. | <a href="/admin/login.html">Admin</a></p>
+  </div>
+</footer>
+
+<!-- CART SIDEBAR -->
+<div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+<div class="cart-sidebar" id="cartSidebar">
+  <div class="cart-header">
+    <h3>Shopping Cart</h3>
+    <button onclick="toggleCart()"><i class="fas fa-times"></i></button>
+  </div>
+  <div class="cart-items" id="cartItems">
+    <div class="cart-empty"><i class="fas fa-shopping-bag"></i><p>Your cart is empty</p></div>
+  </div>
+  <div class="cart-footer" id="cartFooter" style="display:none;">
+    <div class="cart-total">Total: <strong id="cartTotal">Rs. 0</strong></div>
+    <button class="btn-primary w-full" onclick="checkout()">Proceed to Checkout</button>
+  </div>
+</div>
+
+<!-- PRODUCT MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal()"></div>
+<div class="product-modal" id="productModal">
+  <button class="modal-close" onclick="closeModal()"><i class="fas fa-times"></i></button>
+  <div class="modal-content" id="modalContent"></div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script src="products.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
